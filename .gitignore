@@ -1,0 +1,10 @@
+.Rproj.user
+.DS_Store
+.RData
+.Rhistory
+.RData
+.Ruserdata
+inst/doc
+inst/extdata
+!inst/extdata/CMU-1-Small-Region.svs
+!inst/extdata/test_dicom.dcm
