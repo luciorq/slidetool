@@ -1,6 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
-^inst/extdata/.*\.svs$
-^inst/extdata/.*\.ndpi$
-^inst/extdata/.*\.dcm$
+^inst/extdata/not_used$
+^justfile$

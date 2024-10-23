@@ -1,8 +1,20 @@
-#' List of Associated Images
+#' List Associated Images in a Slide
 #'
-#' List associated images for one or more slides. Associated images are small non-pyramidal images containing additional information about the slide, such as its label.
+#' Retrieves a list of associated images for a slide. Associated images are small non-pyramidal images containing additional information, such as labels or thumbnails.
 #'
-#' @return Character vector with names of associated images.
+#' @param path Character string specifying the path to the slide file.
+#'
+#' @return A character vector containing the names of associated images.
+#'
+#' @details
+#' This function extracts the names of associated images embedded within a whole slide image file using OpenSlide.
+#'
+#' @examples
+#' \dontrun{
+#' # List associated images
+#' associated_images <- slidetool_assoc_list("path/to/slide.svs")
+#' print(associated_images)
+#' }
 #'
 #' @export
 slidetool_assoc_list <- function(path) {
@@ -13,9 +25,25 @@ slidetool_assoc_list <- function(path) {
   return(parsed_out)
 }
 
-
-#' slidetool assoc icc read
-#' Write the associated image's ICC color profile to output-file if specified, and otherwise to standard output. If no ICC color profile is available, fail.
+#' Read ICC Color Profile of an Associated Image
+#'
+#' Writes the ICC color profile of a specified associated image to an output file or standard output.
+#' If no ICC color profile is available, the function will produce an error.
+#'
+#' @param path Character string specifying the path to the slide file.
+#' @param assoc Character string specifying the name of the associated image.
+#'
+#' @return A list containing the result of the `slidetool` command execution.
+#'
+#' @details
+#' This function retrieves the ICC color profile of an associated image within a slide using OpenSlide's `slidetool`.
+#'
+#' @examples
+#' \dontrun{
+#' # Read ICC profile of an associated image
+#' icc_profile <- slidetool_assoc_icc_read("path/to/slide.svs", "label")
+#' }
+#'
 #' @export
 slidetool_assoc_icc_read <- function(path, assoc) {
   path <- fs::path_real(path)

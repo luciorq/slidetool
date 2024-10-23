@@ -1,6 +1,23 @@
-#' Retrieve all OpenSlide properties with values.
+#' List Slide Properties
 #'
-#' @return named list with property values as character strings.
+#' Retrieves all OpenSlide properties and their values for a given slide.
+#'
+#' @param path Character string specifying the path to the slide file.
+#'
+#' @return A named character vector with property names and their corresponding values.
+#'
+#' @details
+#' Properties are individual pieces of textual metadata about the slide.
+#' Properties prefixed with `"openslide.*"` are defined by OpenSlide.
+#' Other properties are defined by the slide format and may vary by vendor.
+#'
+#' @examples
+#' \dontrun{
+#' # List slide properties
+#' properties <- slidetool_prop_list("path/to/slide.svs")
+#' print(properties)
+#' }
+#'
 #' @export
 slidetool_prop_list <- function(path) {
   path <- fs::path_real(path)
@@ -13,7 +30,24 @@ slidetool_prop_list <- function(path) {
   return(value_vector)
 }
 
-#' Retrieve all OpenSlide properties names for one slide.
+#' List Slide Property Names
+#'
+#' Retrieves the names of all OpenSlide properties for a given slide.
+#'
+#' @param path Character string specifying the path to the slide file.
+#'
+#' @return A character vector containing the names of all properties.
+#'
+#' @details
+#' This function provides the names of all available properties without their values, useful for exploring available metadata.
+#'
+#' @examples
+#' \dontrun{
+#' # Get property names
+#' property_names <- slidetool_prop_list_names("path/to/slide.svs")
+#' print(property_names)
+#' }
+#'
 #' @export
 slidetool_prop_list_names <- function(path) {
   path <- fs::path_real(path)
@@ -28,12 +62,24 @@ slidetool_prop_list_names <- function(path) {
   return(parsed_out)
 }
 
-
-#' Retrieve a single OpenSlide property value for one or more slides.
+#' Get a Slide Property Value
 #'
-#' Properties are individual pieces of textual metadata about the slide.
-#' Properties prefixed with `"openslide.{...}"` are defined by OpenSlide.
-#' Others are defined by the individual slide format and will vary by vendor.
+#' Retrieves the value of a specific OpenSlide property for a given slide.
+#'
+#' @param path Character string specifying the path to the slide file.
+#' @param property Character string specifying the name of the property to retrieve.
+#'
+#' @return A character string containing the value of the specified property.
+#'
+#' @details
+#' This function allows you to access individual pieces of metadata by specifying the property name.
+#'
+#' @examples
+#' \dontrun{
+#' # Get a specific property value
+#' vendor <- slidetool_prop_get("path/to/slide.svs", "openslide.vendor")
+#' print(vendor)
+#' }
 #'
 #' @export
 slidetool_prop_get <- function(path, property) {
