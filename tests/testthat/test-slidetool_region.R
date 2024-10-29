@@ -18,7 +18,6 @@ test_that("slidetool region read SVS", {
     )
   )
 
-
   testthat::expect_equal(temp_path, region_path)
   testthat::expect_true(fs::file_exists(temp_path))
 })

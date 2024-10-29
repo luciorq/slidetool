@@ -3,3 +3,4 @@
 ^data-raw$
 ^inst/extdata/not_used$
 ^justfile$
+^LICENSE\.md$
