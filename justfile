@@ -12,8 +12,15 @@ github_org := 'luciorq'
   #!/usr/bin/env -vS bash -i
   \builtin set -euxo pipefail;
   R -q -e 'devtools::load_all();styler::style_pkg();';
+  R -q -e 'devtools::load_all();usethis::use_tidy_description();';
   R -q -e 'devtools::load_all();devtools::document();';
+  R -q -e 'devtools::load_all();devtools::run_examples();';
   R -q -e 'devtools::load_all();devtools::test();';
+
+@test-all-examples:
+  #!/usr/bin/env -vS bash -i
+  \builtin set -euxo pipefail;
+  R -q -e 'devtools::load_all();devtools::run_examples(run_dontrun = TRUE, run_donttest = TRUE);';
 
 @check:
   #!/usr/bin/env -vS bash -i
@@ -28,4 +35,3 @@ github_org := 'luciorq'
   \builtin echo -ne "Tagging version: ${__r_pkg_version}\n";
   git tag -a "v${__r_pkg_version}" HEAD -m "Version ${__r_pkg_version} released";
   git push --tags;
-
