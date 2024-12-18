@@ -18,7 +18,6 @@
 #'
 #' @export
 install_slidetool <- function(env_name = "slidetool-r-env", force = FALSE) {
-
   if (isTRUE(.Platform$OS.type %in% c("windows"))) {
     cli::cli_warn(
       message = c(
@@ -35,7 +34,6 @@ install_slidetool <- function(env_name = "slidetool-r-env", force = FALSE) {
     #   "python", "-m", "pip", "install", "openslide-bin",
     #   env_name = env_name
     # )
-
   } else {
     px_res <- condathis::create_env(
       "conda-forge::openslide>=4.0.0",

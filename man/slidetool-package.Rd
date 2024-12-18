@@ -5,7 +5,7 @@
 \alias{slidetool-package}
 \title{slidetool: Retrieve Data from Whole Slide Images}
 \description{
-Uses OpenSlide to retrieve data from whole slide images, also known as virtual slide files.
+Retrieve data from whole slide images, also known as virtual slide files.
 }
 \seealso{
 Useful links:
@@ -16,7 +16,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Lucio Rezende Queiroz \email{luciorqueiroz@gmail.com} (\href{https://orcid.org/0000-0002-6090-1834}{ORCID}) [copyright holder]
+\strong{Maintainer}: Lucio Queiroz \email{luciorqueiroz@gmail.com} (\href{https://orcid.org/0000-0002-6090-1834}{ORCID}) [copyright holder]
 
 }
 \keyword{internal}

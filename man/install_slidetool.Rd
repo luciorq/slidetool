@@ -4,7 +4,7 @@
 \alias{install_slidetool}
 \title{Install OpenSlide Dependencies}
 \usage{
-install_slidetool(env_name = "slidetool-r-env")
+install_slidetool(env_name = "slidetool-r-env", force = FALSE)
 }
 \arguments{
 \item{env_name}{Character string specifying the name of the conda environment. Defaults to \code{"slidetool-r-env"}.}

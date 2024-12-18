@@ -4,24 +4,25 @@ Version: 0.0.0.9002
 Authors@R:
     person("Lucio", "Queiroz", , "luciorqueiroz@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-6090-1834"))
-Description: Retrieve data from whole slide images, also known as virtual slide files.
+Description: Retrieve data from whole slide images, also known as virtual
+    slide files.
 License: AGPL (>= 3)
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
 URL: https://github.com/luciorq/slidetool
 BugReports: https://github.com/luciorq/slidetool/issues
 Depends:
     R (>= 4.0)
-Suggests:
-    curl,
-    magick,
-    testthat (>= 3.0.0),
-    withr
-Config/testthat/edition: 3
 Imports:
     cli,
     condathis (>= 0.1.0),
     fs,
     rlang,
     stringr
+Suggests:
+    curl,
+    magick,
+    testthat (>= 3.0.0),
+    withr
+Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
