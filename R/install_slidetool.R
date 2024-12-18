@@ -17,12 +17,32 @@
 #' }
 #'
 #' @export
-install_slidetool <- function(env_name = "slidetool-r-env") {
-  px_res <- condathis::create_env(
-    "conda-forge::openslide==4.0.0",
-    overwrite = FALSE,
-    verbose = FALSE,
-    env_name = env_name
-  )
+install_slidetool <- function(env_name = "slidetool-r-env", force = FALSE) {
+
+  if (isTRUE(.Platform$OS.type %in% c("windows"))) {
+    cli::cli_warn(
+      message = c(
+        `!` = "Instalation method is not currently available for Windows OS"
+      )
+    )
+    # create_env_res <- condathis::create_env(
+    #   packages = c("python", "pip"),
+    #   overwrite = force,
+    #   verbose = "silent",
+    #   env_name = env_name
+    # )
+    # pip_res <- condathis::run(
+    #   "python", "-m", "pip", "install", "openslide-bin",
+    #   env_name = env_name
+    # )
+
+  } else {
+    px_res <- condathis::create_env(
+      "conda-forge::openslide>=4.0.0",
+      overwrite = force,
+      verbose = "silent",
+      env_name = env_name
+    )
+  }
   invisible(px_res)
 }
