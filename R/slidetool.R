@@ -19,7 +19,7 @@
 #'
 #' @export
 slidetool <- function(...) {
-  px_res <- condathis::run(
+  px_res <- condathis::run_bin(
     "slidetool",
     ...,
     env_name = "slidetool-r-env",
