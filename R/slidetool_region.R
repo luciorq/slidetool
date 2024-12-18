@@ -8,7 +8,7 @@
 #' @param level Integer specifying the slide level to read from (0 is the highest resolution).
 #' @param width Numeric value specifying the width of the region in pixels at the specified level.
 #' @param height Numeric value specifying the height of the region in pixels at the specified level.
-#' @param output_file Character string specifying the path to the output PNG file. If `NULL`, the image will be written to standard output.
+#' @param output_file Character string specifying the path to the output PNG file. If `NULL`, the image will be written to a temporary file output.
 #'
 #' @return Invisibly returns the path to the output file.
 #'
@@ -20,14 +20,13 @@
 #' @examples
 #' \dontrun{
 #' # Read a region and save to a file
-#' slidetool_region_read(
-#'   path = "path/to/slide.svs",
+#' region_path <- slidetool_region_read(
+#'   path = fs::path_package("slidetool", "extdata", "CMU-1-Small-Region.svs"),
 #'   x = 1000,
 #'   y = 1000,
 #'   level = 0,
 #'   width = 500,
-#'   height = 500,
-#'   output_file = "region.png"
+#'   height = 500
 #' )
 #' }
 #'
@@ -37,6 +36,8 @@ slidetool_region_read <- function(path, x, y, level, width, height, output_file 
   path <- fs::path_real(path)
   if (isFALSE(is.null(output_file))) {
     output_file <- fs::path_expand(output_file)
+  } else {
+    output_file <- fs::file_temp(pattern = "region", ext = "png")
   }
   px_res <- slidetool(
     "region", "read", path, x, y, level, width, height, output_file

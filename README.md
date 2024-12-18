@@ -66,6 +66,17 @@ print(associated_images)
 #> [1] "label"     "macro"     "thumbnail"
 ```
 
+Read Thumbnail from a SVS file:
+
+``` r
+thumb_path <- slidetool_assoc_read(slide_path, assoc = "thumbnail")
+
+img_obj <- EBImage::readImage(thumb_path)
+EBImage::display(img_obj, method = "raster")
+```
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+
 Extract a specific region from a slide and save it as a PNG image:
 
 ``` r
@@ -75,28 +86,27 @@ y_coord <- 1000
 level <- 0
 width <- 500
 height <- 500
-output_file <- fs::file_temp(pattern = "region", ext = "png")
+# output_file <- fs::file_temp(pattern = "region", ext = "png")
 
 # Read the region
-slidetool_region_read(
+region_path <- slidetool_region_read(
   path = slide_path,
   x = x_coord,
   y = y_coord,
   level = level,
   width = width,
-  height = height,
-  output_file = output_file
+  height = height
 )
 
 # Check if the file was created
-if (file.exists(output_file)) {
-  message("Region saved to ", output_file)
+if (file.exists(region_path)) {
+  message("Region saved to ", region_path)
 }
-#> Region saved to /var/folders/2q/937_bkg10svdwx1x00prs9nm0000gn/T/RtmppUh5JF/region5f3752feb04e.png
+#> Region saved to /var/folders/2q/937_bkg10svdwx1x00prs9nm0000gn/T/RtmpFK67yi/region13dc552329b99.png
 ```
 
 ``` r
-img_obj <- EBImage::readImage(output_file)
+img_obj <- EBImage::readImage(region_path)
 print(img_obj)
 #> Image 
 #>   colorMode    : Color 
@@ -118,7 +128,7 @@ print(img_obj)
 EBImage::display(img_obj, method = "raster")
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
 
 Get all OpenSlide properties and their values:
 
@@ -177,6 +187,10 @@ property_name <- "openslide.vendor"
 property_value <- slidetool_prop_get(slide_path, property_name)
 print(paste0(property_name, ": ", property_value))
 #> [1] "openslide.vendor: aperio"
+```
+
+``` r
+# magick::image_read(region_path)
 ```
 
 ## License

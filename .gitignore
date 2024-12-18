@@ -4,7 +4,11 @@
 .Rhistory
 .RData
 .Ruserdata
+.Rprofile
+renv.lock
+renv
 inst/doc
 inst/extdata
 !inst/extdata/CMU-1-Small-Region.svs
 !inst/extdata/test_dicom.dcm
+README.html

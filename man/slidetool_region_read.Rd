@@ -19,7 +19,7 @@ slidetool_region_read(path, x, y, level, width, height, output_file = NULL)
 
 \item{height}{Numeric value specifying the height of the region in pixels at the specified level.}
 
-\item{output_file}{Character string specifying the path to the output PNG file. If \code{NULL}, the image will be written to standard output.}
+\item{output_file}{Character string specifying the path to the output PNG file. If \code{NULL}, the image will be written to a temporary file output.}
 }
 \value{
 Invisibly returns the path to the output file.
@@ -35,14 +35,13 @@ This function is useful for extracting regions of interest from large slide imag
 \examples{
 \dontrun{
 # Read a region and save to a file
-slidetool_region_read(
-  path = "path/to/slide.svs",
+region_path <- slidetool_region_read(
+  path = fs::path_package("slidetool", "extdata", "CMU-1-Small-Region.svs"),
   x = 1000,
   y = 1000,
   level = 0,
   width = 500,
-  height = 500,
-  output_file = "region.png"
+  height = 500
 )
 }
 

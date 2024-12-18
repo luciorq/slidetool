@@ -8,6 +8,8 @@ install_slidetool(env_name = "slidetool-r-env", force = FALSE)
 }
 \arguments{
 \item{env_name}{Character string specifying the name of the conda environment. Defaults to \code{"slidetool-r-env"}.}
+
+\item{force}{A logical value indicating whether to force the re-creation of the Conda environment even if it already exist. Default is \code{FALSE}.}
 }
 \value{
 Invisibly returns the result of the conda environment creation.

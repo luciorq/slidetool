@@ -52,3 +52,42 @@ slidetool_assoc_icc_read <- function(path, assoc) {
   # parsed_out <- stringr::str_split_1(parsed_out, "[[:space:]]")
   return(px_res)
 }
+
+#' Read an Associated Image from a Slide
+#'
+#' Extracts a specific associated image from a slide and saves it as a PNG image.
+#'
+#' @param path Character string specifying the path to the slide file.
+#' @param assoc Character string specifying the name of the associated image.
+#' @param output_file Character string specifying the path to the output PNG file. If `NULL`, the image will be written to a temporary file output.
+#'
+#' @examples
+#' \dontrun{
+#' # Read ICC profile of an associated image
+#' thumbnail_path <- slidetool_assoc_read("path/to/slide.svs", "thumbnail")
+#' }
+#'
+#' @export
+slidetool_assoc_read <- function(path, assoc, output_file = NULL) {
+  rlang::check_required(path)
+  path <- fs::path_real(path)
+  if (isFALSE(is.null(output_file))) {
+    output_file <- fs::path_expand(output_file)
+  } else {
+    output_file <- fs::file_temp(pattern = "assoc", ext = "png")
+  }
+  px_res <- slidetool(
+    "assoc", "read", path, assoc, output_file
+  )
+  if (isTRUE(px_res$status == 0)) {
+    if (isFALSE(fs::file_exists(output_file))) {
+      cli::cli_abort(
+        message = c(
+          `x` = "{.path {output_file}} could not be created"
+        ),
+        class = "slidetool_assoc_read_file_missing"
+      )
+    }
+  }
+  invisible(output_file)
+}

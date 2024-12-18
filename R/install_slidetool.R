@@ -4,6 +4,8 @@
 #'
 #' @param env_name Character string specifying the name of the conda environment. Defaults to `"slidetool-r-env"`.
 #'
+#' @param force A logical value indicating whether to force the re-creation of the Conda environment even if it already exist. Default is `FALSE`.
+#'
 #' @return Invisibly returns the result of the conda environment creation.
 #'
 #' @details
