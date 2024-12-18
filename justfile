@@ -16,6 +16,7 @@ github_org := 'luciorq'
   R -q -e 'devtools::load_all();devtools::document();';
   R -q -e 'devtools::load_all();devtools::run_examples();';
   R -q -e 'devtools::load_all();devtools::test();';
+  R -q -e 'devtools::load_all();rmarkdown::render("README.Rmd", encoding = "UTF-8")';
 
 @test-all-examples:
   #!/usr/bin/env -vS bash -i
